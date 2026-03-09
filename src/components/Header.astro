@@ -1,0 +1,129 @@
+---
+import content from '../data/content.json';
+const { businessName, contact, nav, services } = content;
+---
+
+<nav style="background:#F2A93B; height:64px;" class="w-full sticky top-0 z-50 shadow-md">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-full flex items-center justify-between">
+
+    <a href="/" class="flex items-center flex-shrink-0">
+      <span style="width:4px; height:36px; background:#0f0f0f; display:inline-block; margin-right:10px; flex-shrink:0;"></span>
+      <span class="flex flex-col leading-none">
+        <span style="font-size:1.35rem; font-weight:900; letter-spacing:-0.02em; color:#0f0f0f; line-height:1;">
+          {businessName.toUpperCase().split(' ')[0]}
+        </span>
+        <span style="font-size:0.6rem; font-weight:600; letter-spacing:0.18em; color:#0f0f0f; opacity:0.6; text-transform:uppercase; line-height:1; margin-top:3px;">
+          Handyman Services
+        </span>
+      </span>
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-8" style="list-style:none; margin:0; padding:0;">
+      {nav.map((item) => (
+        item.label === 'Services' ? (
+          <li style="position:relative;" class="nav-dropdown-parent">
+            <a href={item.href}
+              style="display:flex; align-items:center; gap:5px; font-weight:600; font-size:0.875rem; color:#0f0f0f; text-decoration:none;"
+              class="nav-dropdown-trigger"
+            >
+              {item.label}
+              <svg width="11" height="7" viewBox="0 0 11 7" fill="none" style="flex-shrink:0; margin-top:1px;">
+                <path d="M1 1L5.5 5.5L10 1" stroke="#0f0f0f" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </a>
+            <!-- DROPDOWN -->
+            <div class="nav-dropdown" style="display:none; position:absolute; top:calc(100% + 12px); left:50%; transform:translateX(-50%); background:#fff; min-width:220px; box-shadow:0 8px 32px rgba(0,0,0,0.13); z-index:100; padding:6px 0;">
+              {services.map((svc) => (
+                <a href={`/services#${svc.id}`}
+                  style="display:flex; align-items:center; gap:10px; padding:10px 20px; color:#111; font-size:0.875rem; font-weight:500; text-decoration:none; white-space:nowrap; border-left:3px solid transparent; transition:all 0.15s;"
+                  class="dropdown-link"
+                >
+                  <span style="width:6px; height:6px; border-radius:50%; background:#F2A93B; flex-shrink:0;"></span>
+                  {svc.name}
+                </a>
+              ))}
+            </div>
+          </li>
+        ) : (
+          <li>
+            <a href={item.href} style="font-weight:600; font-size:0.875rem; color:#0f0f0f; text-decoration:none;" class="nav-link">
+              {item.label}
+            </a>
+          </li>
+        )
+      ))}
+    </ul>
+
+    <a href={contact.phoneClick} style="background:#0f0f0f;" class="hidden lg:flex items-center gap-2 text-white font-bold text-sm px-5 py-2.5 hover:bg-gray-800 transition-colors flex-shrink-0">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+      </svg>
+      {contact.phoneDisplay}
+    </a>
+
+    <button id="mob-toggle" class="lg:hidden p-2" aria-label="Menu">
+      <svg class="w-6 h-6" fill="none" stroke="#0f0f0f" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mob-menu" class="hidden lg:hidden border-t border-black/15 px-6 py-4 space-y-1" style="background:#F2A93B;">
+    {nav.map((item) => (
+      item.label === 'Services' ? (
+        <div>
+          <a href={item.href} class="block text-black font-semibold text-sm py-2 border-b border-black/10">
+            {item.label}
+          </a>
+          <div style="padding-left:16px;">
+            {services.map((svc) => (
+              <a href={`/services#${svc.id}`} class="block text-black/80 font-medium text-sm py-1.5 border-b border-black/5 last:border-0">
+                — {svc.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a href={item.href} class="block text-black font-semibold text-sm py-2 border-b border-black/10 last:border-0">
+          {item.label}
+        </a>
+      )
+    ))}
+    <a href={contact.phoneClick} style="background:#0f0f0f;" class="flex items-center justify-center gap-2 text-white font-bold text-sm py-3 mt-2">
+      {contact.phoneDisplay}
+    </a>
+  </div>
+</nav>
+
+<style>
+  .nav-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .nav-dropdown-trigger:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .dropdown-link:hover {
+    background: #fdf6ec;
+    border-left-color: #F2A93B !important;
+    color: #000;
+  }
+</style>
+
+<script is:inline>
+  // Mobile toggle
+  document.getElementById('mob-toggle').addEventListener('click', function() {
+    document.getElementById('mob-menu').classList.toggle('hidden');
+  });
+
+  // Desktop dropdown hover
+  document.querySelectorAll('.nav-dropdown-parent').forEach(function(parent) {
+    var dropdown = parent.querySelector('.nav-dropdown');
+    var timeout;
+    parent.addEventListener('mouseenter', function() {
+      clearTimeout(timeout);
+      dropdown.style.display = 'block';
+    });
+    parent.addEventListener('mouseleave', function() {
+      timeout = setTimeout(function() {
+        dropdown.style.display = 'none';
+      }, 120);
+    });
+  });
+</script>

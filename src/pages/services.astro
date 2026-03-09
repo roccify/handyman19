@@ -1,0 +1,86 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import content from '../data/content.json';
+const { services, heroes } = content;
+---
+
+<MainLayout title={content.seo.services.title} description={content.seo.services.description} ogImage={content.seo.services.ogImage}>
+
+  <!-- HERO: yellow wave -->
+  <div style="background:#F2A93B;" class="pb-0">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-12 text-center">
+      <p class="uppercase text-xs tracking-widest font-semibold text-black/60 mb-3">WHAT WE DO</p>
+      <h1 class="text-5xl font-bold tracking-tight text-black">{heroes.services.headline}</h1>
+      <p class="mt-4 text-black/70 text-base max-w-xl mx-auto">{heroes.services.subheadline}</p>
+    </div>
+    <div style="overflow:hidden; line-height:0;">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+        <path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- SERVICE BLOCKS: alternating, problem → solution → benefits -->
+  {services.map((svc, i) => (
+    <section id={svc.id} class="py-20 scroll-mt-24" style={i % 2 === 0 ? 'background:#fff;' : 'background:#f5f5f5;'}>
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-start ${i % 2 !== 0 ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+
+          <div class="overflow-hidden">
+            <img
+              src={svc.image?.url ?? ''}
+              alt={svc.image?.alt ?? svc.name}
+              class="w-full object-cover"
+              style="min-height:380px; object-position:center; background:#e5e7eb;"
+              onerror="this.style.background='#e5e7eb'"
+            />
+          </div>
+
+          <div>
+            <h2 class="text-4xl font-bold text-gray-900 mb-2">{svc.name}</h2>
+            <div class="w-10 h-1 mb-6" style="background:#F2A93B;"></div>
+            <p class="text-base leading-relaxed text-gray-500 mb-8">{svc.shortDescription}</p>
+
+            {Array.isArray(svc.problem) && svc.problem.length > 0 && (
+              <div class="mb-6 p-5" style="background:#fafafa; border-left:3px solid #e5e7eb;">
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">The Problem</p>
+                {svc.problem.map((p) => (
+                  <p class="text-base text-gray-600 leading-relaxed mb-1">{p}</p>
+                ))}
+              </div>
+            )}
+
+            {Array.isArray(svc.solution) && svc.solution.length > 0 && (
+              <div class="mb-6 p-5" style="background:#fafafa; border-left:3px solid #F2A93B;">
+                <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color:#c47d10;">Our Solution</p>
+                {svc.solution.map((s) => (
+                  <p class="text-base text-gray-600 leading-relaxed mb-1">{s}</p>
+                ))}
+              </div>
+            )}
+
+            <ul class="space-y-3 mb-8">
+              {svc.benefits.map((b) => (
+                <li class="flex items-start gap-3">
+                  <div class="w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#F2A93B;">
+                    <svg class="w-3 h-3" fill="none" stroke="black" stroke-width="3" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                    </svg>
+                  </div>
+                  <span class="text-base text-gray-700">{b}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="/contact" style="background:#F2A93B;" class="inline-block text-black font-bold text-sm px-8 py-4 hover:brightness-95 transition-all">
+              Get a Free Quote
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <QuoteForm />
+</MainLayout>

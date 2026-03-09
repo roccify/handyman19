@@ -1,0 +1,31 @@
+---
+import content from '../data/content.json';
+const hero = content.heroes.home;
+const imgUrl = hero.image?.url ?? '';
+---
+
+<div class="relative w-full overflow-hidden" style="height:600px; min-height:500px;">
+  <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${imgUrl}'); background-color: #2a2a2a;`}></div>
+  <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.25) 100%);"></div>
+  <div class="relative z-10 h-full max-w-7xl mx-auto px-6 lg:px-10 flex items-center">
+    <div class="max-w-xl">
+      <p class="uppercase text-xs tracking-widest font-semibold mb-4" style="color:#F2A93B;">
+        {content.tagline}
+      </p>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight mb-6">
+        {hero.headline}
+      </h1>
+      <p class="text-base leading-relaxed text-gray-300 mb-8 max-w-md">
+        {hero.subheadline}
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href={hero.ctaPrimary.href} style="background:#F2A93B;" class="inline-block text-black font-bold text-sm px-8 py-4 hover:brightness-95 transition-all">
+          {hero.ctaPrimary.label}
+        </a>
+        <a href={hero.ctaSecondary.href} class="inline-block text-white font-bold text-sm px-8 py-4 border-2 border-white hover:bg-white hover:text-black transition-all">
+          {hero.ctaSecondary.label}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,139 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import content from '../data/content.json';
+const { about, heroes, businessName, foundedYear, whyChooseUs } = content;
+---
+
+<MainLayout title={content.seo.about.title} description={content.seo.about.description} ogImage={content.seo.about.ogImage}>
+
+  <!-- HERO: yellow wave -->
+  <div style="background:#F2A93B;" class="pb-0">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-12 text-center">
+      <p class="uppercase text-xs tracking-widest font-semibold text-black/60 mb-3">GET TO KNOW US</p>
+      <h1 class="text-5xl font-bold tracking-tight text-black">{heroes.about.headline}</h1>
+      <p class="mt-3 text-black/70 text-base">{heroes.about.subheadline}</p>
+    </div>
+    <div style="overflow:hidden; line-height:0;">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+        <path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ORIGIN STORY: image left, text right -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="overflow-hidden">
+          <img
+            src={about.storyImage?.url ?? ''}
+            alt={about.storyImage?.alt ?? `${businessName} team`}
+            class="w-full object-cover"
+            style="min-height:400px; object-position:center; background:#e5e7eb;"
+            onerror="this.style.background='#e5e7eb'"
+          />
+        </div>
+        <div>
+          <p class="uppercase text-xs tracking-widest text-gray-400 font-semibold mb-4">OUR STORY</p>
+          <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">Built on Trust Since {foundedYear}</h2>
+          {Array.isArray(about.originStory)
+            ? about.originStory.map((para) => (
+                <p class="text-base leading-relaxed text-gray-500 mb-4">{para}</p>
+              ))
+            : <p class="text-base leading-relaxed text-gray-500 mb-8">{about.originStory}</p>
+          }
+          <a href="/contact" style="background:#F2A93B;" class="inline-block text-black font-bold text-sm px-8 py-4 hover:brightness-95 transition-all mt-4">
+            Get a Free Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  {about.team && (
+    <section class="py-20" style="background:#f5f5f5;">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="uppercase text-xs tracking-widest text-gray-400 font-semibold mb-4">OUR TEAM</p>
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">People You Can Trust</h2>
+            <p class="text-base leading-relaxed text-gray-500">{about.team.description}</p>
+          </div>
+          <div class="overflow-hidden">
+            <img
+              src={about.team.image?.url ?? ''}
+              alt={about.team.image?.alt ?? 'Our team'}
+              class="w-full object-cover"
+              style="min-height:360px; object-position:center; background:#e5e7eb;"
+              onerror="this.style.background='#e5e7eb'"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CREDENTIALS -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12">
+        <p class="uppercase text-xs tracking-widest text-gray-400 font-semibold mb-3">CREDENTIALS</p>
+        <h2 class="text-4xl font-bold text-gray-900">Licensed, Insured & Certified</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {about.credentials.map((cert) => (
+          <div class="flex items-center gap-4 p-6 bg-white" style="border:1px solid #e5e7eb;">
+            <div class="w-8 h-8 flex items-center justify-center flex-shrink-0" style="background:#F2A93B;">
+              <svg class="w-4 h-4" fill="none" stroke="black" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+              </svg>
+            </div>
+            <span class="text-base font-semibold text-gray-800">{cert.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK FACTS -->
+  {about.quickFacts && about.quickFacts.length > 0 && (
+    <section class="py-16" style="background:#0f0f0f;">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-800">
+          {about.quickFacts.map((fact) => (
+            <div class="bg-gray-900 p-10 text-center">
+              <p class="text-5xl font-bold mb-2" style="color:#F2A93B;">{fact.number}</p>
+              <p class="text-sm text-gray-400 font-medium">{fact.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- WHY CHOOSE US -->
+  <section class="py-20" style="background:#0f0f0f;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12">
+        <p class="uppercase text-xs tracking-widest text-gray-500 font-semibold mb-3">WHY US</p>
+        <h2 class="text-4xl font-bold text-white">Why Rochester Homeowners Choose Us</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {whyChooseUs.map((item) => (
+          <div class="p-7 text-center" style="border:1px solid rgba(255,255,255,0.1);">
+            <div class="w-12 h-12 mx-auto mb-5 flex items-center justify-center" style="background:#F2A93B;">
+              {item.icon === 'shield' && <svg class="w-5 h-5" fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>}
+              {item.icon === 'clock' && <svg class="w-5 h-5" fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>}
+              {item.icon === 'dollar' && <svg class="w-5 h-5" fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>}
+              {item.icon === 'star' && <svg class="w-5 h-5" fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>}
+              {!['shield','clock','dollar','star'].includes(item.icon) && <svg class="w-5 h-5" fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>}
+            </div>
+            <p class="text-sm font-semibold text-white leading-snug">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</MainLayout>

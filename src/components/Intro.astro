@@ -1,0 +1,17 @@
+---
+import content from '../data/content.json';
+---
+
+<section class="py-10 md:py-14 bg-gray-50 border-b border-gray-100">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-start gap-8">
+      <div class="hidden md:flex flex-col items-center gap-2 flex-shrink-0 pt-1">
+        <div class="w-0.5 h-12" style="background:#F2A93B;"></div>
+        <div class="w-2 h-2" style="background:#F2A93B;"></div>
+      </div>
+      <p class="text-gray-600 leading-relaxed" style="font-size: 1.2rem;">
+        {content.intro.text}
+      </p>
+    </div>
+  </div>
+</section>

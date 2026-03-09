@@ -1,0 +1,32 @@
+---
+import content from '../data/content.json';
+const facts = content.about.quickFacts;
+---
+
+<section class="py-12 md:py-16 bg-white border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="mb-10">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-8 h-0.5" style="background:#F2A93B;"></div>
+        <span class="text-xs font-bold uppercase tracking-widest" style="color:#F2A93B;">By the Numbers</span>
+      </div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900">Quick Facts</h2>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
+      {facts.map((fact) => (
+        <div class="bg-white p-8 lg:p-10 text-center hover:bg-amber-50 transition-colors">
+          <div
+            class="font-display font-bold mb-2"
+            style="font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color:#F2A93B;"
+          >
+            {fact.number}
+          </div>
+          <div class="text-gray-500 text-sm font-medium uppercase tracking-wide">{fact.label}</div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

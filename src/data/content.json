@@ -1,0 +1,330 @@
+{
+  "_INSTRUCTIONS": "REPLACE ALL DEMO DATA BELOW WITH CLIENT INFO. Business name, phone, email, address, services, and testimonials are the only things you need to change. Do NOT change any key names — only values.",
+
+  "businessName": "ReliableFix Handyman Services",
+  "shortName": "ReliableFix",
+  "tagline": "Rochester's Trusted Handyman Team Since 2014",
+  "foundedYear": 2014,
+
+  "contact": {
+    "phoneDisplay": "(585) 331-4721",
+    "phoneClick": "tel:+15853314721",
+    "email": "info@reliablefixrochester.com",
+    "address": "85 Mushroom Blvd, Rochester, NY 14623",
+    "mapCaption": "Proudly serving Rochester and Monroe County",
+    "serviceArea": "Rochester, NY and nearby towns including Irondequoit, Brighton, Webster, Greece, and Fairport",
+    "googleMapsEmbed": "https://maps.google.com/maps?q=Rochester,+NY&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  },
+
+  "hours": {
+    "weekdays": "Mon–Fri: 7:00 AM – 6:00 PM",
+    "saturday": "Sat: 8:00 AM – 3:00 PM",
+    "sunday": "By Appointment"
+  },
+
+  "social": {
+    "facebook": "https://facebook.com",
+    "instagram": "https://instagram.com",
+    "google": "https://google.com",
+    "yelp": "https://yelp.com"
+  },
+
+  "nav": [
+    { "label": "Home",     "href": "/" },
+    { "label": "Services", "href": "/services" },
+    { "label": "About Us", "href": "/about" },
+    { "label": "Contact",  "href": "/contact" }
+  ],
+
+  "heroes": {
+    "home": {
+      "headline": "Trusted & Reliable Handyman Services",
+      "subheadline": "Rochester's licensed and insured handyman team since 2014. Flat-rate pricing, prompt scheduling, and work done right the first time.",
+      "ctaPrimary":  { "label": "Our Services",      "href": "/services" },
+      "ctaSecondary": { "label": "Get a Free Quote", "href": "/contact" },
+      "image": {
+        "url": "/images/hero-home.jpg",
+        "alt": "ReliableFix handyman technician on a job in Rochester NY",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      }
+    },
+    "services": {
+      "headline": "Our Services",
+      "subheadline": "Licensed and insured handyman services across Rochester and Monroe County. Flat-rate pricing, no surprises.",
+      "image": {
+        "url": "/images/hero-services.jpg",
+        "alt": "Handyman tools and work in progress",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      }
+    },
+    "about": {
+      "headline": "About Us",
+      "subheadline": "Locally owned and operated in Rochester, NY since 2014.",
+      "image": {
+        "url": "/images/hero-about.jpg",
+        "alt": "ReliableFix team photo",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      }
+    },
+    "contact": {
+      "headline": "Contact Us",
+      "subheadline": "Get a free quote or book an appointment today.",
+      "image": {
+        "url": "/images/hero-contact.jpg",
+        "alt": "Contact ReliableFix Handyman Services",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      }
+    }
+  },
+
+  "seo": {
+    "home": {
+      "title": "ReliableFix Handyman Services | Rochester, NY",
+      "description": "Licensed and insured handyman services in Rochester, NY. Home maintenance, plumbing, drywall, carpentry, electrical, and flooring. Flat-rate pricing since 2014.",
+      "ogImage": "/images/hero-home.jpg"
+    },
+    "services": {
+      "title": "Handyman Services | ReliableFix Rochester NY",
+      "description": "Home maintenance, plumbing repairs, drywall & painting, carpentry, electrical, and flooring services in Rochester, NY. Free estimates.",
+      "ogImage": "/images/hero-services.jpg"
+    },
+    "about": {
+      "title": "About Us | ReliableFix Handyman Rochester NY",
+      "description": "ReliableFix has served Rochester homeowners since 2014. Licensed, insured, and background-checked technicians across Monroe County.",
+      "ogImage": "/images/hero-about.jpg"
+    },
+    "contact": {
+      "title": "Contact Us | ReliableFix Handyman Rochester NY",
+      "description": "Book a handyman appointment in Rochester, NY. Call (585) 331-4721 or fill out our contact form. Same-day response.",
+      "ogImage": "/images/hero-contact.jpg"
+    }
+  },
+
+  "homepageServiceIds": ["maintenance", "plumbing", "drywall", "carpentry", "electrical", "flooring"],
+
+  "services": [
+    {
+      "id": "maintenance",
+      "name": "Home Maintenance",
+      "shortDescription": "Seasonal upkeep and preventive repairs to keep your property in top condition year-round.",
+      "icon": "wrench",
+      "image": {
+        "url": "/images/service-01.jpg",
+        "alt": "Home maintenance technician at work in Rochester NY",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      },
+      "problem": ["Small issues left unattended — dripping faucets, sticking doors, worn caulk — quietly grow into costly repairs. Most homeowners don't notice until the damage is done.", "A single deferred maintenance visit can turn a $50 fix into a $500 problem by next season."],
+      "solution": ["Our technicians handle all routine maintenance in a single scheduled visit, fully stocked and ready. We work through a standard checklist and flag anything that needs attention before it becomes urgent."],
+      "benefits": ["Seasonal inspection included with every visit", "Prevents costly emergency repairs", "One technician handles multiple trades", "Flat-rate pricing — no surprises"]
+    },
+    {
+      "id": "plumbing",
+      "name": "Plumbing Repairs",
+      "shortDescription": "Faucet replacement, fixture installs, leak repairs, and under-sink work done right.",
+      "icon": "droplet",
+      "image": {
+        "url": "/images/service-05.jpg",
+        "alt": "Plumber fixing a faucet in Rochester NY",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      },
+      "problem": ["Leaky faucets, slow drains, and running toilets waste water and drive up your utility bills every month they're left unattended.", "Minor plumbing issues rarely fix themselves — they typically worsen over time and cause water damage if ignored."],
+      "solution": ["We diagnose and fix plumbing issues on the same visit using quality materials, tested before we leave. No callbacks, no second visits."],
+      "benefits": ["Faucet and fixture replacement", "Showerhead and toilet installs", "Under-sink and supply line repairs", "Every connection pressure-tested"]
+    },
+    {
+      "id": "drywall",
+      "name": "Drywall & Painting",
+      "shortDescription": "Drywall patching, skim coating, texture matching, and paint-ready finish work.",
+      "icon": "brush",
+      "image": {
+        "url": "/images/service-02.jpg",
+        "alt": "Drywall patching and painting in Rochester NY",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      },
+      "problem": ["Holes, cracks, and nail pops in drywall look unprofessional and lower your home's value. Most homeowners put it off because texture matching seems complicated.", "A visible patch that doesn't match the surrounding wall is almost as bad as leaving the hole there."],
+      "solution": ["We patch, skim, and texture-match your walls so repairs blend in completely — paint-ready same day. We bring all materials and leave no mess behind."],
+      "benefits": ["Texture matching on existing walls", "Skim coat for smooth finish", "Paint-ready results same day", "All patch sizes — small to large"]
+    },
+    {
+      "id": "carpentry",
+      "name": "Carpentry",
+      "shortDescription": "Door repairs, furniture assembly, shelving installation, and wood repairs.",
+      "icon": "hammer",
+      "image": {
+        "url": "/images/service-03.jpg",
+        "alt": "Carpenter working on door repair in Rochester NY",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      },
+      "problem": ["Sticking doors, broken hinges, and sagging shelves are daily frustrations that most homeowners tolerate for far too long.", "What feels like a minor inconvenience is often a structural issue that gets worse with every season."],
+      "solution": ["Our carpenters handle door planing, hinge replacement, custom shelving, and furniture assembly in one visit, fully equipped with the right tools for the job."],
+      "benefits": ["Door repair and full replacement", "Custom shelving and mounting", "Furniture assembly (IKEA and others)", "Deck board and fence repairs"]
+    },
+    {
+      "id": "electrical",
+      "name": "Electrical",
+      "shortDescription": "Outlet and switch replacement, light fixture installation, and ceiling fan mounting.",
+      "icon": "bolt",
+      "image": {
+        "url": "/images/service-04.jpg",
+        "alt": "Electrician installing a light fixture in Rochester NY",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      },
+      "problem": ["Flickering lights, dead outlets, and outdated fixtures are safety hazards that should not be left unattended.", "Most homeowners attempt DIY electrical and create code violations that cost more to fix later."],
+      "solution": ["We handle all minor electrical work safely and to NY code — no oversized jobs, just reliable small-task electrical done right the first time."],
+      "benefits": ["Outlet and switch replacement", "Ceiling fan and light fixture install", "GFCI upgrades for kitchens and baths", "All work meets NY safety codes"]
+    },
+    {
+      "id": "flooring",
+      "name": "Flooring",
+      "shortDescription": "Hardwood repair, laminate installation, tile replacement, and vinyl plank fitting.",
+      "icon": "squares",
+      "image": {
+        "url": "/images/service-06.jpg",
+        "alt": "Flooring installation and repair in Rochester NY",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      },
+      "problem": ["Scratched hardwood, cracked tiles, and lifting laminate are eyesores that get worse and harder to match the longer they're left.", "A single damaged section spreads — water gets under lifted edges, subfloor softens, and a $200 repair becomes a full room replacement."],
+      "solution": ["We repair and replace flooring sections precisely — matching existing material wherever possible and leaving transitions clean and level."],
+      "benefits": ["Hardwood scratch and plank repair", "Tile replacement and re-grouting", "Laminate and vinyl plank fitting", "Transition strip installation"]
+    }
+  ],
+
+  "socialProof": [
+    { "icon": "star",   "text": "Serving Rochester Since 2014" },
+    { "icon": "clock",  "text": "We Show Up On Time" },
+    { "icon": "dollar", "text": "Flat-Rate Pricing, No Surprises" },
+    { "icon": "shield", "text": "Free Estimates on All Jobs" }
+  ],
+
+  "intro": {
+    "text": "ReliableFix started in 2014 with one goal: Rochester homeowners deserve a handyman service that shows up on time, charges a fair price, and does the job right."
+  },
+
+  "howItWorks": {
+    "headline": "How It Works",
+    "subheadline": "Getting started is simple. Here's what to expect when you reach out.",
+    "steps": [
+      { "number": "1", "title": "Request a Quote",       "description": "Call us or fill out the contact form. Tell us what needs fixing and we'll get back to you the same day." },
+      { "number": "2", "title": "Get a Flat-Rate Price", "description": "We assess the job and give you a clear price before we start — no hidden fees, no surprises when we're done." },
+      { "number": "3", "title": "We Fix It Right",        "description": "Our licensed technicians handle the job start to finish. We clean up and follow up to confirm everything is working." }
+    ]
+  },
+
+  "gallery": [
+    { "url": "/images/work-01.jpg", "alt": "Home maintenance repair Rochester NY", "title": "Home Maintenance", "location": "Rochester, NY"   },
+    { "url": "/images/work-02.jpg", "alt": "Drywall patching and repair",          "title": "Drywall Repair",   "location": "Brighton, NY"     },
+    { "url": "/images/work-03.jpg", "alt": "Carpentry door repair",                "title": "Door Repair",      "location": "Irondequoit, NY"  },
+    { "url": "/images/work-04.jpg", "alt": "Electrical outlet replacement",        "title": "Electrical Work",  "location": "Webster, NY"      },
+    { "url": "/images/work-05.jpg", "alt": "Flooring installation and repair",     "title": "Flooring",         "location": "Fairport, NY"     },
+    { "url": "/images/work-06.jpg", "alt": "Plumbing faucet replacement",          "title": "Plumbing Repair",  "location": "Greece, NY"       }
+  ],
+
+  "whyChooseUs": [
+    { "icon": "shield", "text": "Fully Licensed, Bonded & Insured" },
+    { "icon": "clock",  "text": "We Show Up On Time — Guaranteed" },
+    { "icon": "dollar", "text": "Flat-Rate Pricing, No Surprises" },
+    { "icon": "star",   "text": "Background-Checked Technicians" }
+  ],
+
+  "testimonials": [
+    {
+      "name": "Shona Jones",
+      "location": "Rochester, NY",
+      "rating": 5,
+      "quote": "They mounted our TV, patched two drywall holes, and replaced a bathroom faucet all in one visit. Everything done cleanly and the price matched the quote exactly."
+    },
+    {
+      "name": "Chris Johnson",
+      "location": "Brighton, NY",
+      "rating": 5,
+      "quote": "Our front door had been sticking for months. They diagnosed the issue, planed the frame, and it closes perfectly now. Quick, professional, and fairly priced."
+    },
+    {
+      "name": "Lisa Davis",
+      "location": "Irondequoit, NY",
+      "rating": 5,
+      "quote": "Hired ReliableFix to assemble a full bedroom set and mount shelving in my new apartment. Finished everything in under three hours. Will not bother with DIY again."
+    }
+  ],
+
+  "about": {
+    "originStory": [
+      "ReliableFix started in 2014 with a single truck and a straightforward promise: show up on time, quote a fair price, and do the job right. Rochester homeowners had grown tired of handymen who wouldn't return calls, quoted hourly and ran long, or sent different people every visit.",
+      "Over eleven years, we've grown into a team of licensed, background-checked technicians covering every trade a homeowner needs — maintenance, plumbing, drywall, carpentry, electrical, and flooring. Every job is still quoted flat-rate before we start, and we still answer the phone when you call.",
+      "We're locally owned, still operating out of Rochester, and every technician on our team lives and works in Monroe County. That hasn't changed."
+    ],
+    "storyImage": {
+      "url": "/images/about-story.jpg",
+      "alt": "ReliableFix handyman founder reviewing a job checklist in Rochester NY",
+      "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+    },
+    "team": {
+      "description": "Every ReliableFix technician is licensed, background-checked, and has a minimum of five years of field experience across multiple trades. We don't send apprentices alone — every job is handled by someone who has done it hundreds of times before. We treat your home with respect: shoe covers at the door, protected surfaces, and a full walkthrough when the job is complete.",
+      "image": {
+        "url": "/images/about-team.jpg",
+        "alt": "ReliableFix handyman team preparing for a job in Rochester NY",
+        "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+      }
+    },
+    "credentials": [
+      { "icon": "award",     "text": "NY Home Improvement Contractor License" },
+      { "icon": "shield",    "text": "General Liability Insurance" },
+      { "icon": "clipboard", "text": "EPA Lead-Safe Certification" },
+      { "icon": "star",      "text": "Background-Checked Technicians" },
+      { "icon": "dollar",    "text": "Flat-Rate Transparent Pricing" },
+      { "icon": "pin",       "text": "Locally Owned Since 2014" }
+    ],
+    "quickFacts": [
+      { "number": "11+",  "label": "Years in Business" },
+      { "number": "800+", "label": "Jobs Completed" },
+      { "number": "12",   "label": "Cities Served" },
+      { "number": "5★",   "label": "Average Google Rating" }
+    ]
+  },
+
+  "faq": [
+    { "question": "What is meant by your flat-rate pricing?",       "answer": "We quote a flat rate before any work begins. The price you're quoted is the price you pay — no hidden fees, no hourly surprises." },
+    { "question": "Are your estimates free and no-obligation?",     "answer": "Yes. We provide free estimates for all standard jobs. You're under no obligation to proceed after receiving a quote." },
+    { "question": "Do you offer a warranty for your work?",         "answer": "Yes. All workmanship is backed by a 30-day satisfaction guarantee. If something isn't right, we come back and fix it at no charge." },
+    { "question": "Is there an emergency or same-day callout fee?", "answer": "Same-day and urgent appointments are available at standard flat-rate pricing. We do not add emergency surcharges." },
+    { "question": "Are you insured and licensed?",                  "answer": "Yes. ReliableFix carries full general liability insurance and all technicians hold the NY Home Improvement Contractor License and are background-checked." },
+    { "question": "Do you supply your own materials?",              "answer": "Yes. We bring all tools and standard materials. For specialty items we'll let you know in advance what you'll need to source." },
+    { "question": "What areas do you serve?",                       "answer": "We serve Rochester and surrounding Monroe County communities including Irondequoit, Brighton, Webster, Greece, Fairport, Penfield, Pittsford, Victor, Gates, Henrietta, and Chili." },
+    { "question": "How do I book an appointment?",                  "answer": "Call us at (585) 331-4721 or use the contact form. We typically confirm within a few hours and offer appointments as soon as the next business day." }
+  ],
+
+  "serviceArea": {
+    "headline": "Proudly Serving Monroe County",
+    "subheadline": "Rochester and surrounding communities",
+    "cities": ["Rochester", "Irondequoit", "Brighton", "Webster", "Greece", "Fairport", "Penfield", "Pittsford", "Victor", "Gates", "Henrietta", "Chili"]
+  },
+
+  "ctaBanner": {
+    "headline": "Need a Handyman in Rochester?",
+    "subheadline": "Licensed, flat-rate, and available same day. Get a free quote or call us directly — we pick up.",
+    "ctaPrimary":   { "label": "Request Free Quote",  "href": "/contact" },
+    "ctaSecondary": { "label": "Call (585) 331-4721", "href": "tel:+15853314721" },
+    "image": {
+      "url": "/images/cta-banner.jpg",
+      "alt": "ReliableFix handyman technician completing a job in Rochester NY",
+      "fallback": "linear-gradient(135deg, #c47d10 0%, #0f0f0f 100%)"
+    }
+  },
+
+  "contactForm": {
+    "contactEmail": "info@reliablefixrochester.com",
+    "heading": "Send Us a Message",
+    "subheading": "Tell us what needs fixing and we'll get back to you within one business day.",
+    "fields": {
+      "name":    "Full Name",
+      "email":   "Email Address",
+      "phone":   "Phone Number",
+      "message": "Describe the job"
+    },
+    "submitLabel": "Send Message"
+  },
+
+  "footer": {
+    "copyright": "ReliableFix Handyman Services. All rights reserved."
+  }
+}
