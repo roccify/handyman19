@@ -70,10 +70,10 @@ const { businessName, contact, nav, services } = content;
     </button>
   </div>
 
-  <!-- MOBILE MENU — full screen overlay -->
+  <!-- MOBILE MENU — dropdown, not fullscreen -->
   <div id="mob-menu"
     class="hidden lg:hidden"
-    style="position:fixed; top:64px; left:0; right:0; bottom:0; background:#F2A93B; overflow-y:auto; z-index:300; padding:8px 0 32px;">
+    style="position:absolute; top:64px; left:0; right:0; background:#F2A93B; overflow-y:auto; z-index:300; padding:8px 0 24px; box-shadow:0 8px 24px rgba(0,0,0,0.18);">
 
     {nav.map((item) => (
       item.label === 'Services' ? (
@@ -119,32 +119,31 @@ const { businessName, contact, nav, services } = content;
   var mobMenu = document.getElementById('mob-menu');
   var iconOpen = document.getElementById('mob-icon-open');
   var iconClose = document.getElementById('mob-icon-close');
-  var stickyBar = document.getElementById('sticky-call-bar');
+
+  function getStickyBar() { return document.getElementById('sticky-call-bar'); }
+
+  function openMenu() {
+    mobMenu.classList.remove('hidden');
+    iconOpen.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+    var bar = getStickyBar();
+    if (bar) bar.style.display = 'none';
+  }
+
+  function closeMenu() {
+    mobMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    var bar = getStickyBar();
+    if (bar) bar.style.display = '';
+  }
 
   mobToggle.addEventListener('click', function() {
-    var isHidden = mobMenu.classList.contains('hidden');
-    if (isHidden) {
-      mobMenu.classList.remove('hidden');
-      iconOpen.classList.add('hidden');
-      iconClose.classList.remove('hidden');
-      // hide sticky call bar
-      if (stickyBar) stickyBar.style.display = 'none';
-    } else {
-      mobMenu.classList.add('hidden');
-      iconOpen.classList.remove('hidden');
-      iconClose.classList.add('hidden');
-      if (stickyBar) stickyBar.style.display = '';
-    }
+    if (mobMenu.classList.contains('hidden')) { openMenu(); } else { closeMenu(); }
   });
 
-  // Close menu when any link inside is clicked
   mobMenu.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      mobMenu.classList.add('hidden');
-      iconOpen.classList.remove('hidden');
-      iconClose.classList.add('hidden');
-      if (stickyBar) stickyBar.style.display = '';
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   // Desktop dropdown
