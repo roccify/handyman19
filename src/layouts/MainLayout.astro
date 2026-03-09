@@ -28,7 +28,6 @@ const currentUrl = Astro.url.href;
   {ogImage && <meta property="og:image" content={`${siteUrl}${ogImage}`} />}
   <link rel="icon" type="image/svg+xml" href={`data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F2A93B'/><text x='50' y='72' font-size='60' font-family='Georgia,serif' font-weight='700' fill='%230f0f0f' text-anchor='middle'>${firstLetter}</text></svg>`} />
   <link rel="apple-touch-icon" href={`data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' fill='%23F2A93B'/><text x='90' y='125' font-size='100' font-family='Georgia,serif' font-weight='700' fill='%230f0f0f' text-anchor='middle'>${firstLetter}</text></svg>`} />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -36,6 +35,38 @@ const currentUrl = Astro.url.href;
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', system-ui, sans-serif; color: #1a1a1a; background: #fff; }
     html { scroll-behavior: smooth; }
+
+    /* Scroll animations — safe, no CDN dependency */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-zoom {
+      opacity: 0;
+      transform: scale(0.94);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal-zoom.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    /* stagger children */
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal-stagger.visible > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0ms; }
+    .reveal-stagger.visible > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:80ms; }
+    .reveal-stagger.visible > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:160ms; }
+    .reveal-stagger.visible > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:240ms; }
+    .reveal-stagger.visible > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:300ms; }
+    .reveal-stagger.visible > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay:360ms; }
   </style>
 </head>
 <body>
@@ -48,9 +79,27 @@ const currentUrl = Astro.url.href;
       Call {content.contact.phoneDisplay}
     </a>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.js"></script>
   <script is:inline>
-    AOS.init({ duration: 500, once: true, offset: 60, easing: 'ease-out' });
+    (function() {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      function init() {
+        document.querySelectorAll('.reveal, .reveal-zoom, .reveal-stagger').forEach(function(el) {
+          obs.observe(el);
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
   </script>
   <script is:inline>
     (function(){var el=document.getElementById('sticky-call-bar');if(!el)return;window.addEventListener('scroll',function(){if(window.scrollY>300)el.classList.remove('hidden');},{passive:true});})();
