@@ -18,20 +18,19 @@ const { businessName, contact, nav, services } = content;
       </span>
     </a>
 
+    <!-- DESKTOP NAV -->
     <ul class="hidden lg:flex items-center gap-8" style="list-style:none; margin:0; padding:0;">
       {nav.map((item) => (
         item.label === 'Services' ? (
           <li style="position:relative;" class="nav-dropdown-parent">
             <a href={item.href}
               style="display:flex; align-items:center; gap:5px; font-weight:600; font-size:0.875rem; color:#0f0f0f; text-decoration:none;"
-              class="nav-dropdown-trigger"
             >
               {item.label}
               <svg width="11" height="7" viewBox="0 0 11 7" fill="none" style="flex-shrink:0; margin-top:1px;">
                 <path d="M1 1L5.5 5.5L10 1" stroke="#0f0f0f" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </a>
-            <!-- DROPDOWN -->
             <div class="nav-dropdown" style="display:none; position:absolute; top:calc(100% + 12px); left:50%; transform:translateX(-50%); background:#fff; min-width:220px; box-shadow:0 8px 32px rgba(0,0,0,0.13); z-index:100; padding:6px 0;">
               {services.map((svc) => (
                 <a href={`/services#${svc.id}`}
@@ -62,57 +61,93 @@ const { businessName, contact, nav, services } = content;
     </a>
 
     <button id="mob-toggle" class="lg:hidden p-2" aria-label="Menu">
-      <svg class="w-6 h-6" fill="none" stroke="#0f0f0f" stroke-width="2.5" viewBox="0 0 24 24">
+      <svg id="mob-icon-open" class="w-6 h-6" fill="none" stroke="#0f0f0f" stroke-width="2.5" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/>
+      </svg>
+      <svg id="mob-icon-close" class="w-6 h-6 hidden" fill="none" stroke="#0f0f0f" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
       </svg>
     </button>
   </div>
 
-  <!-- MOBILE MENU -->
-  <div id="mob-menu" class="hidden lg:hidden border-t border-black/15 px-6 py-4 space-y-1" style="background:#F2A93B;">
+  <!-- MOBILE MENU — full screen overlay -->
+  <div id="mob-menu"
+    class="hidden lg:hidden"
+    style="position:fixed; top:64px; left:0; right:0; bottom:0; background:#F2A93B; overflow-y:auto; z-index:200; padding:8px 0 24px;">
+
     {nav.map((item) => (
       item.label === 'Services' ? (
         <div>
-          <a href={item.href} class="block text-black font-semibold text-sm py-2 border-b border-black/10">
+          <a href={item.href} style="display:block; color:#111; font-weight:700; font-size:1rem; padding:14px 24px; border-bottom:1px solid rgba(0,0,0,0.12);">
             {item.label}
           </a>
-          <div style="padding-left:16px;">
+          <div style="background:rgba(0,0,0,0.06);">
             {services.map((svc) => (
-              <a href={`/services#${svc.id}`} class="block text-black/80 font-medium text-sm py-1.5 border-b border-black/5 last:border-0">
-                — {svc.name}
+              <a href={`/services#${svc.id}`}
+                style="display:block; color:#111; font-weight:500; font-size:0.9rem; padding:11px 24px 11px 40px; border-bottom:1px solid rgba(0,0,0,0.07);">
+                {svc.name}
               </a>
             ))}
           </div>
         </div>
       ) : (
-        <a href={item.href} class="block text-black font-semibold text-sm py-2 border-b border-black/10 last:border-0">
+        <a href={item.href} style="display:block; color:#111; font-weight:700; font-size:1rem; padding:14px 24px; border-bottom:1px solid rgba(0,0,0,0.12);">
           {item.label}
         </a>
       )
     ))}
-    <a href={contact.phoneClick} style="background:#0f0f0f;" class="flex items-center justify-center gap-2 text-white font-bold text-sm py-3 mt-2">
-      {contact.phoneDisplay}
-    </a>
+
+    <div style="padding:20px 24px 0;">
+      <a href={contact.phoneClick}
+        style="display:flex; align-items:center; justify-content:center; gap:10px; background:#0f0f0f; color:#fff; font-weight:700; font-size:1rem; padding:16px; border-radius:4px; text-decoration:none;">
+        <svg style="width:18px; height:18px;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+        </svg>
+        {contact.phoneDisplay}
+      </a>
+    </div>
   </div>
 </nav>
 
 <style>
   .nav-link:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .nav-dropdown-trigger:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .dropdown-link:hover {
-    background: #fdf6ec;
-    border-left-color: #F2A93B !important;
-    color: #000;
-  }
+  .dropdown-link:hover { background:#fdf6ec; border-left-color:#F2A93B !important; }
 </style>
 
 <script is:inline>
-  // Mobile toggle
-  document.getElementById('mob-toggle').addEventListener('click', function() {
-    document.getElementById('mob-menu').classList.toggle('hidden');
+  var mobToggle = document.getElementById('mob-toggle');
+  var mobMenu = document.getElementById('mob-menu');
+  var iconOpen = document.getElementById('mob-icon-open');
+  var iconClose = document.getElementById('mob-icon-close');
+  var stickyBar = document.getElementById('sticky-call-bar');
+
+  mobToggle.addEventListener('click', function() {
+    var isHidden = mobMenu.classList.contains('hidden');
+    if (isHidden) {
+      mobMenu.classList.remove('hidden');
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      // hide sticky call bar
+      if (stickyBar) stickyBar.style.display = 'none';
+    } else {
+      mobMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      if (stickyBar) stickyBar.style.display = '';
+    }
   });
 
-  // Desktop dropdown hover
+  // Close menu when any link inside is clicked
+  mobMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      if (stickyBar) stickyBar.style.display = '';
+    });
+  });
+
+  // Desktop dropdown
   document.querySelectorAll('.nav-dropdown-parent').forEach(function(parent) {
     var dropdown = parent.querySelector('.nav-dropdown');
     var timeout;
@@ -121,9 +156,7 @@ const { businessName, contact, nav, services } = content;
       dropdown.style.display = 'block';
     });
     parent.addEventListener('mouseleave', function() {
-      timeout = setTimeout(function() {
-        dropdown.style.display = 'none';
-      }, 120);
+      timeout = setTimeout(function() { dropdown.style.display = 'none'; }, 120);
     });
   });
 </script>
